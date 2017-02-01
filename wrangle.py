@@ -72,9 +72,10 @@ def parse(fname):
 
 
 if __name__ == "__main__":
-    emails = []
+
     for email_dump in os.listdir(DATA_DIR):
+        emails = []
         emails += parse(email_dump)
-    
-    with open("parsed_data/january-2017.json", "w") as clean:
-        json.dump(emails, clean)
+
+        with open("parsed_data/" + email_dump.split('.')[0] + ".json", "w") as clean:
+            json.dump(emails, clean)
