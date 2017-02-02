@@ -39,7 +39,12 @@ def parse(fname):
 
         # Split between message and metadata
         message_chunks = re.compile("Message-ID:\s\<.*\>").split(raw_message)
-        metadata, text = message_chunks[0], message_chunks[1]
+
+        try:
+            metadata, text = message_chunks[0], message_chunks[1]
+        except Exception as e:
+            print(e)
+            continue
 
         author_info = re.search("From:\s(.*)\sat\s(.*)\s\((.*)\)", metadata)
         # From line is the following:
@@ -72,9 +77,10 @@ def parse(fname):
 
 
 if __name__ == "__main__":
-    emails = []
+
     for email_dump in os.listdir(DATA_DIR):
+        emails = []
         emails += parse(email_dump)
-    
-    with open("parsed_data/january-2017.json", "w") as clean:
-        json.dump(emails, clean)
+
+        with open("parsed_data/" + email_dump.split('.')[0] + ".json", "w") as clean:
+            json.dump(emails, clean)
