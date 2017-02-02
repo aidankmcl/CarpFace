@@ -1,0 +1,46 @@
+.top {
+	background-image: url('/static/images/blue-lines.png');
+	background-repeat: repeat;
+    padding: 10px 0px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #9ce2ff;
+}
+	.top h1 {
+		color: #0087c6;
+	    font-weight: 800;
+	}
+
+.year, .year select {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+ul.options {
+	display: inline-block;
+	list-style: none;
+	padding-left: 0px;
+	margin-bottom: 20px;
+}
+	ul.options li {
+		display: inline-block;
+		padding: 8px 20px;
+		background: rgba(0,0,0,0.3);
+		border-radius: 2px;
+		color: white;
+		cursor: pointer;
+		text-decoration: none;
+	}
+		ul.options li:hover {
+			opacity: 0.7;
+		}
+		ul.options li.active {
+			background: #0087c6;
+		}
+
+	dd {
+		margin-bottom: 25px;
+	}
+
+ul.results {
+	padding-left: 0;
+}

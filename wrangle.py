@@ -39,7 +39,11 @@ def parse(fname):
 
         # Split between message and metadata
         message_chunks = re.compile("Message-ID:\s\<.*\>").split(raw_message)
-        metadata, text = message_chunks[0], message_chunks[1]
+        try:
+            metadata, text = message_chunks[0], message_chunks[1]
+        except Exception as e:
+            print(e)
+            continue
 
         author_info = re.search("From:\s(.*)\sat\s(.*)\s\((.*)\)", metadata)
         # From line is the following:
