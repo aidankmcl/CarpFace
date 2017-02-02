@@ -44,3 +44,7 @@ ul.options {
 ul.results {
 	padding-left: 0;
 }
+	ul.results li {
+		font-size: 1.2em;
+		margin-bottom: 5px;
+	}
