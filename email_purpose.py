@@ -8,4 +8,5 @@ from pprint import pprint
 with open('parsed_data/january-2017.json') as data_file:    
     data = json.load(data_file)
 
-pprint(data)
+for email in range(len(data)):
+	print "Email number: %s\n" %email, data[email], '\n'
