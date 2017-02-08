@@ -1,59 +1,29 @@
-<html>
-  <head>
-    <title>CarpFace</title>
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+{% extends 'layout.html' %}
 
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/static/js/search.js"></script>
-    <style type="text/css">
-      td, th { border: 0 !important; }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1>CarpFace</h1>
-        </div>
-      </div>
-      <div class="row option-holder">
-        <div class="col-xs-12">
-          <div class="year">
-            <select>
-              {% for year in dates %}
-              <option value="{{ year }}">{{ year }}</option>
-              {% endfor %}
-            </select>
-          </div>
-          <ul class="options">
-            <li name="january">Jan</li>
-            <li name="february">Feb</li>
-            <li name="march">Mar</li>
-            <li name="april">Apr</li>
-            <li name="may">May</li>
-            <li name="june">Jun</li>
-            <li name="july">Jul</li>
-            <li name="august">Aug</li>
-            <li name="september">Sep</li>
-            <li name="october">Oct</li>
-            <li name="november">Nov</li>
-            <li name="december">Dec</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <ul class="results">
-            
-          </ul>          
-        </div>
-      </div>
+{% block page %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h1>CarpFace</h1>
     </div>
-  </body>
-</html>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+      {% include 'sidebar.html' %}
+    </div>
+    <div class="col-xs-12 col-md-9">
+      {% include 'results.html' %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- pre-reqs for date picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"/>
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
+{% endblock %}

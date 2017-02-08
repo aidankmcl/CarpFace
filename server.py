@@ -9,9 +9,14 @@ license: MIT
 import os
 import json
 import re
+
 from flask import Flask, redirect, render_template, request, url_for
 
-app = Flask(__name__)
+from factory import create_app
+from models import db
+
+app = create_app()
+db.init_app(app)
 
 
 @app.route('/health')
