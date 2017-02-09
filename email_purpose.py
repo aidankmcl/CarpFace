@@ -2,6 +2,7 @@
 specific terms which might identify what an email is about and organizing
 emails based on the use of those terms."""
 
+import unicodedata
 import json
 from pprint import pprint
 
@@ -22,25 +23,36 @@ item_emails = {}
 job_emails = {}
 other_emails = {}
 
-final_subject = " "
+
 
 for val in range(len(data)):
 	subject = data[val]['subject']
+	subject = str(subject)
 	new_subject = subject.split()
-	new_subject.remove('[Carpediem]')
+	del new_subject[0]
 	for word in new_subject:
 		word = word.lower()
 		if word in food_words:
-			food_emails['email%s' %val] = new_subject
+			food_subject = " ".join(new_subject)
+			food_emails['email%s' %val] = food_subject
 		elif word in event_words:
-			event_emails['email%s' %val] = new_subject
+			event_subject = " ".join(new_subject)
+			event_emails['email%s' %val] = event_subject
 		elif word in music_words:
-			music_emails['email%s' %val] = new_subject
+			music_subject = " ".join(new_subject)
+			music_emails['email%s' %val] = music_subject
 		elif word in item_words:
-			item_emails['email%s' %val] = new_subject
+			item_subject = " ".join(new_subject)
+			item_emails['email%s' %val] = item_subject
 		elif word in job_words:
-			job_emails['email%s' %val] = new_subject
+			job_subject = " ".join(new_subject)
+			job_emails['email%s' %val] = job_subject
 		elif word in other_words:
-			other_emails['email%s' %val] = new_subject
+			other_subject = " ".join(new_subject)
+			other_emails['email%s' %val] = other_subject
 
 print food_emails
+print event_emails
+print music_emails
+print item_emails
+print other_emails
