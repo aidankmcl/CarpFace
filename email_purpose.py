@@ -2,7 +2,6 @@
 specific terms which might identify what an email is about and organizing
 emails based on the use of those terms."""
 
-import unicodedata
 import json
 from pprint import pprint
 
@@ -22,7 +21,6 @@ music_emails = {}
 item_emails = {}
 job_emails = {}
 other_emails = {}
-
 
 
 for val in range(len(data)):
@@ -56,3 +54,26 @@ print event_emails
 print music_emails
 print item_emails
 print other_emails
+
+final_subject = " "
+
+for val in range(len(data)):
+	subject = data[val]['subject']
+	new_subject = subject.split()
+	new_subject.remove('[Carpediem]')
+	for word in new_subject:
+		word = word.lower()
+		if word in food_words:
+			food_emails['email%s' %val] = new_subject
+		elif word in event_words:
+			event_emails['email%s' %val] = new_subject
+		elif word in music_words:
+			music_emails['email%s' %val] = new_subject
+		elif word in item_words:
+			item_emails['email%s' %val] = new_subject
+		elif word in job_words:
+			job_emails['email%s' %val] = new_subject
+		elif word in other_words:
+			other_emails['email%s' %val] = new_subject
+
+print food_emails
