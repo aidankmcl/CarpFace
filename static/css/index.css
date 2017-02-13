@@ -26,6 +26,7 @@ ul.options {
 		padding: 8px 20px;
 		background: rgba(0,0,0,0.3);
 		border-radius: 2px;
+		margin-bottom: 4px;
 		color: white;
 		cursor: pointer;
 		text-decoration: none;
@@ -41,10 +42,30 @@ ul.options {
 		margin-bottom: 25px;
 	}
 
-ul.results {
+#results ul {
 	padding-left: 0;
 }
-	ul.results li {
+	#results ul li {
 		font-size: 1.2em;
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 	}
+
+	#results ul .subject {
+		font-weight: 500;
+		font-size: 18px;
+		transition: all 150ms ease-in;
+	}
+		#results ul .subject:hover {
+			cursor: pointer;
+			color: #0087c6;
+		}
+
+
+	#results ul .text {
+		margin-top: 15px;
+	    margin-bottom: 25px;
+	    display: none;
+	}
+		#results ul .text.open {
+		    display: block;
+		}
