@@ -103,6 +103,7 @@ def get_email_model(email_json):
 def add_emails():
     for email_chunk in os.listdir(os.path.join(os.path.dirname(__file__), 'parsed_data/')):
         emails = [get_email_model(email) for email in read_emails(email_chunk)]
+        add_tags(emails)
         db.session.bulk_save_objects(emails)
         db.session.commit()
 
@@ -113,13 +114,14 @@ def add_tags(emails):
         email.tags = ','.join(topic_tags)
 
 
+def reset_db():
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
+        add_emails()
+        db.session.commit()
+
 if __name__ == "__main__":
     app = create_app()
     db.init_app(app)
-
-    # with app.app_context():
-    #     db.drop_all()
-    #     db.create_all()
-    #     add_emails()
-    #     add_tags(emails)
-    #     db.session.commit()
+    # reset_db()
