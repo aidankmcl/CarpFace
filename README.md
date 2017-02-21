@@ -28,10 +28,14 @@ This repo is intended to provide a frontend for any of the mailing list data dum
 Right now, the software provides both topic and date range filters on top of carpediem historical data so that anybody who completes the setup can sift through all data up until the point of scrape. Unless the data format changes, these scripts should be able to interpret future data thus the project has no set time limitations.
 
 The project currently looks like the following:
+
+* Overall
 ![Overall](/screenshots/total.png)
 
+* Topic filtering
 ![Topic Filtering](/screenshots/filter.png)
 
+* Date filtering
 ![Date Filtering](/screenshots/date.png)
 
 
